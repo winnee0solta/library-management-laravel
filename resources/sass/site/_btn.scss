@@ -1,0 +1,134 @@
+
+.view-btn {
+    color: $white;
+    background: $black;
+    text-transform: uppercase;
+    transition: 0.5s ease-in-out;
+    padding-top: 0.5rem;
+    text-align: center;
+
+    &:hover {
+        border: 1px solid $black;
+        transition: 0.6s ease-in-out;
+        border-radius: 2px;
+        color: $black;
+        background: $white;
+    }
+}
+.edit-btn {
+    color: $white;
+    background: $secondary-theme;
+    text-transform: uppercase;
+    transition: 0.5s ease-in-out;
+    padding-top: 0.5rem;
+    text-align: center;
+     &:hover {
+         border: 1px solid $secondary-theme;
+         transition: 0.6s ease-in-out;
+         border-radius: 2px;
+         color: $secondary-theme;
+         background: $white;
+     }
+}
+
+.sales-btn {
+    color: $white;
+    background: $orange;
+    text-transform: uppercase;
+    transition:all 0.5s ease-in-out;
+    padding-top: 0.5rem;
+    text-align: center;
+
+    &:hover {
+         border: 1px solid $black;
+         transition: 0.6s ease-in-out;
+         border-radius: 2px;
+         color: $black;
+         background: $white;
+    }
+}
+
+.product-remove-btn {
+    color: $white;
+    background: $red;
+    text-transform: uppercase;
+    transition: 0.5s ease-in-out;
+    padding-top: 0.5rem;
+    text-align: center;
+
+    &:hover {
+        border: 1px solid $red;
+        transition: 0.6s ease-in-out;
+        border-radius: 2px;
+        color: $red;
+        background: $white;
+    }
+}
+.remove-btn {
+    color: $white;
+    background: $red;
+    text-transform: uppercase;
+    transition: 0.5s ease-in-out;
+    padding-top: 0.5rem;
+    text-align: center;
+
+    &:hover {
+        border: 1px solid $red;
+        transition: 0.6s ease-in-out;
+        border-radius: 2px;
+        color: $red;
+        background: $white;
+    }
+}
+
+.orange-btn{
+    color: $white;
+    background: $orange;
+    text-transform: uppercase;
+    transition: 0.5s ease-in-out;
+    padding-top: 0.5rem;
+    text-align: center;
+
+    &:hover {
+        border: 1px solid $orange;
+        transition: 0.6s ease-in-out;
+        border-radius: 2px;
+        color: $red;
+        background: $white;
+    }
+}
+
+.red-btn {
+    color: $white;
+    background: $red;
+    text-transform: uppercase;
+    transition: 0.5s ease-in-out;
+    padding-top: 0.5rem;
+    text-align: center;
+
+    &:hover {
+        border: 1px solid $red;
+        transition: 0.6s ease-in-out;
+        border-radius: 2px;
+        color: $red;
+        background: $white;
+    }
+}
+
+
+.green-btn {
+    color: $white;
+    background: $primary-theme;
+    text-transform: uppercase;
+    transition: 0.5s ease-in-out;
+    padding-top: 0.5rem;
+    text-align: center;
+
+    &:hover {
+        border: 1px solid $primary-theme;
+        transition: 0.6s ease-in-out;
+        border-radius: 2px;
+        color: $red;
+        background: $white;
+    }
+}

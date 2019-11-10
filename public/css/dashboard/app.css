@@ -1,0 +1,266 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed);*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  outline: none !important;
+  box-sizing: border-box;
+}
+
+.row {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*,
+*:hover,
+*:focus,
+*:active {
+  outline: 0 !important;
+}
+
+.row {
+  margin: 0px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.border {
+  border: none !important;
+}
+
+html,
+body {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  color: black;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  background: #f1f2f6;
+}
+
+body ::-moz-selection {
+  background-color: black;
+  color: #fff;
+}
+
+body ::selection {
+  background-color: black;
+  color: #fff;
+}
+
+.p-l-0 {
+  padding-left: 0 !important;
+}
+
+.p-r-0 {
+  padding-right: 0 !important;
+}
+
+.space-between {
+  margin: 70px 0;
+}
+
+.small-space {
+  height: 10px;
+}
+
+.custom-nav-bar {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px 0px;
+}
+
+.custom-nav-bar .nav-brand {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+
+.custom-nav-bar .nav-brand a {
+  color: #000000;
+}
+
+.custom-nav-bar .logout-btn {
+  text-align: right;
+}
+
+.custom-nav-bar .logout-btn a {
+  font-size: 15px;
+  background: black;
+  color: white;
+}
+
+.custom-nav-bar .logout-btn a:hover {
+  color: black;
+  border: 1px solid black;
+  background: white;
+  font-weight: bold;
+}
+
+.books-main-container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.books-main-container .book-single-container {
+  margin-top: 20px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.books-main-container .book-single-container .image-container img {
+  max-height: 300px;
+  display: block;
+  margin: 0 auto;
+}
+
+.books-main-container .book-single-container .title {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.books-main-container .book-single-container .author {
+  font-size: 12px;
+}
+
+.books-main-container .book-single-container a {
+  width: 100%;
+  background: black;
+  color: white;
+  margin-top: 10px;
+  padding: 5px 0px;
+  font-size: 14px;
+}
+
+.books-main-container .book-single-container a:hover {
+  color: black;
+  border: 1px solid black;
+  background: white;
+  font-weight: bold;
+}
+
+.single-book-main-container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.single-book-main-container .title {
+  font-size: 25px;
+  font-weight: bold;
+  color: red;
+  border-bottom: 2px solid red;
+}
+
+.single-book-main-container table {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.single-book-main-container table tr .td-title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.single-book-main-container .desc {
+  margin-top: 35px;
+}
+
+.single-book-main-container .desc p {
+  font-size: 14px;
+}
+
+.add_new_book_btn {
+  font-size: 14px;
+  background: red;
+  color: white;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.add_new_book_btn:hover {
+  color: red;
+  border: 1px solid red;
+  background: white;
+  font-weight: bold;
+}
+
+.book-list-tabel-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-size: 13px;
+}
+
+.book-list-tabel-container table thead th {
+  border-top: none;
+}
+
+.book-list-tabel-container .view_btn {
+  font-size: 12px;
+  background: black;
+  color: white;
+  text-transform: capitalize;
+  min-width: 60px;
+}
+
+.book-list-tabel-container .remove_btn {
+  display: inline-block;
+  font-size: 12px;
+  background: #e3342f;
+  color: white;
+  text-transform: capitalize;
+  min-width: 60px;
+}
+
+.custom-form {
+  margin-top: 20px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26);
+  padding: 40px 46px;
+}
+
+.custom-form label {
+  font-size: 13px;
+}
+
+.custom-form input {
+  height: 38px;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.custom-form .btn_submit {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  padding: 7px;
+  margin-top: 20px;
+  font-size: 14px;
+  text-transform: uppercase;
+  background: black;
+  color: white;
+}
+

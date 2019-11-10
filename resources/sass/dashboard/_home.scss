@@ -1,0 +1,202 @@
+// nav section
+.custom-nav-bar {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px 0px;
+
+    .nav-brand {
+        text-align: left;
+        font-size: 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-family: $font-roboto;
+
+        a {
+            color: #000000;
+        }
+    }
+
+    .logout-btn {
+        text-align: right;
+
+        a {
+            font-size: 15px;
+            background: black;
+            color: white;
+
+            &:hover {
+                color: black;
+                border: 1px solid black;
+                background: white;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+
+.books-main-container {
+
+    margin-top: 20px;
+    margin-bottom: 40px;
+
+    .book-single-container {
+        margin-top: 20px;
+        padding: 20px;
+        background: #ffffff;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+        .image-container {
+            img {
+                max-height: 300px;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        .title {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .author {
+            font-size: 12px;
+        }
+
+        a {
+            width: 100%;
+            background: black;
+            color: white;
+            margin-top: 10px;
+            padding: 5px 0px;
+            font-size: 14px;
+
+            &:hover {
+                color: black;
+                border: 1px solid black;
+                background: white;
+                font-weight: bold;
+            }
+
+        }
+    }
+}
+
+.single-book-main-container{
+        margin-top: 40px;
+        margin-bottom: 40px;
+ padding: 20px;
+ background: #ffffff;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+
+            .title {
+                font-size: 25px;
+                font-weight: bold;
+                color: red;
+                border-bottom: 2px solid red;
+            }
+
+            table{
+                margin-top: 10px;
+                  font-size: 15px;
+                tr{
+                    .td-title{
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            .desc{
+                margin-top: 35px;
+                p{
+                    font-size: 14px;
+                }
+            }
+
+}
+
+// admin section
+
+
+.add_new_book_btn {
+    font-size: 14px;
+    background: red;
+    color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+
+    &:hover {
+        color: red;
+        border: 1px solid red;
+        background: white;
+        font-weight: bold;
+    }
+}
+
+
+.book-list-tabel-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    font-size: 13px;
+
+    table {
+        thead {
+            th {
+                border-top: none;
+            }
+        }
+    }
+
+    .view_btn {
+        font-size: 12px;
+        background: black;
+        color: white;
+        text-transform: capitalize;
+        min-width: 60px;
+    }
+
+    .remove_btn {
+        display: inline-block;
+        font-size: 12px;
+        background: $red;
+        color: white;
+        text-transform: capitalize;
+        min-width: 60px;
+    }
+}
+
+
+.custom-form{
+      margin-top: 20px;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26);
+      padding: 40px 46px;
+
+      label {
+          font-size: 13px;
+      }
+
+      input {
+          height: 38px;
+          font-size: 12px;
+          margin-bottom: 20px;
+      }
+
+      .btn_submit {
+          width: 100%;
+          display: block;
+          margin: 0 auto;
+          padding: 7px;
+          margin-top: 20px;
+          font-size: 14px;
+          text-transform: uppercase;
+          background: black;
+          color: white;
+      }
+}
