@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-4 col-12">
             <div class="logout-btn">
-                <a href="/dashbaord/manage-users" class="btn">
+                <a href="/dashboard/manage-users" class="btn">
                     Manage Users
                 </a>
                 <a href="/logout" class="btn">

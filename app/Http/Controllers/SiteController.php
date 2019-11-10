@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Category;
+use App\Reservedbook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\User;
+use Carbon\Carbon;
 
 class SiteController extends Controller
 {
@@ -53,7 +56,105 @@ class SiteController extends Controller
             // return $datas;
             return view('dashboard.index', compact('datas'));
         } else if (Auth::user()->title == 'public') {
-            return view('site.index');
+            //load datas
+            $categories = Category::all();
+            return view('site.home',compact('categories'));
         }
+    }
+    public function searchBook(Request $request){
+        $searchterm = request('search');
+
+        $books = Book::where('book_name', 'like', '%' . $searchterm . '%')
+        ->orWhere('book_author', 'like', '%' . $searchterm . '%')
+        ->orWhere('book_shelves_no', 'like', '%' . $searchterm . '%')
+        ->get();
+        return view('site.singlecat', compact( 'books'));
+    }
+    public function contactusView(){
+        return view('site.contactus');
+    }
+    public function contactus(){
+        $name = request('name');
+        $email = request('email');
+        $message = request('message');
+        // send mail/
+        $currentuser =  Auth::user()->email;
+        $data = array(
+            'name' => $name,
+            'bodymessage' => $message,
+            'email' => $email,
+        );
+
+
+        //send mail TODO: mail change
+        Mail::send('mail.newmessage', $data, function ($message) use ($email, $name) {
+            $message->from($email,  $name);
+            $message->to('winneecreztha@gmail.com', 'Library Admin');
+            $message->subject('New Message From Library Site!');
+        });
+
+        return redirect('/');
+    }
+    public function aboutusView(){
+        return view('site.aboutus');
+    }
+    public function faqView(){
+        return view('site.faq');
+    }
+    public function termsView(){
+        return view('site.terms');
+    }
+    public function singlecatView($id,$name){
+        $books = Book::where('category_id',$id)->get();
+        return view('site.singlecat',compact('name','books'));
+    }
+    public function singlebookView($id,$name){
+        $isreserved = false;
+        $outofstock = false;
+        $needtoreturn = 'no';
+        $book = Book::where('id',$id)->first();
+        if (Reservedbook::where('book_id', $book->id)->count() == $book->book_count ) {
+           $outofstock = true;
+        }else if(Reservedbook::where('user_id', Auth::id())->where('book_id', $id)->count() > 0){
+                $isreserved = true;
+                $rb = Reservedbook::where('user_id', Auth::id())->where('book_id', $id)->first();
+                if (!empty($rb)) {
+                    $needtoreturn = $rb->return_date;
+                }
+        }
+        return view('site.singlebook',compact('name','book', 'isreserved', 'outofstock', 'needtoreturn'));
+    }
+    public function reserveBook($id,$name){
+        $book = Book::where('id',$id)->first();
+        $dt = Carbon::now();
+        if (Reservedbook::where('user_id',Auth::id())->where('book_id',$id)->count() == 0) {
+
+            Reservedbook::create([
+                'book_id'=>$id,
+                'user_id'=> Auth::id(),
+                'return_date'=> $dt->addDays(10),
+            ]);
+            $book->book_reserved = $book->book_reserved + 1;
+            $book->save();
+            // send mail/
+            $currentuser =  Auth::user()->email;
+            //send mail TODO: mail change
+            Mail::send('mail.newbookreserved', [], function ($message) use ($currentuser) {
+                $message->from($currentuser, 'New Book Reserved !');
+                $message->to('winneecreztha@gmail.com', 'Library Admin');
+                $message->subject('Book Reservation!');
+            });
+        }
+        return redirect('/single-book/'.$id.'/'.$name);
+    }
+    public function cancelreserveBook($id,$name){
+        if (Reservedbook::where('user_id',Auth::id())->where('book_id',$id)->count() > 0) {
+            $book = Book::where('id', $id)->first();
+            $book->book_reserved = $book->book_reserved - 1;
+            $book->save();
+            Reservedbook::where('user_id', Auth::id())->where('book_id', $id)->delete();
+
+        }
+        return redirect('/single-book/'.$id.'/'.$name);
     }
 }

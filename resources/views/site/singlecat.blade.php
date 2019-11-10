@@ -23,20 +23,23 @@
 
         {{-- categorys --}}
         <div class="category-holder mt-5 container">
+            @if (!empty($name))
             <div class="h1">
-                Categories
+                Category - {{$name}}
             </div>
+
+            @endif
             <div class="row">
                 <div class="col-md-3 mt-3">
-                    @if (!empty($categories))
-                        @foreach ($categories as $cat)
-                        <a href="/category/{{$cat['id']}}/{{$cat['category_name']}}">
+                    @if (!empty($books))
+                        @foreach ($books as $book)
+                        <a href="/single-book/{{$book['id']}}/{{$book['book_name']}}">
                             <div class="single-cat card">
-                            <div class="single-cat--img m-2" style="background: url('/images/category/{{$cat['category_image']}}')">
+                            <div class="single-cat--img m-2" style="background: url('/images/books/{{$book['book_image']}}')">
 
                             </div>
-                             <div class="single-cat--title  pb-1">
-                                 {{$cat['category_name']}}
+                             <div class="single-cat--title  pb-1" style="text-transform: none;">
+                                 {{ Illuminate\Support\Str::limit($book['book_name'], 20)  }}
                              </div>
                         </div>
                         </a>

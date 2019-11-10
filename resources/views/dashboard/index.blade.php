@@ -65,7 +65,7 @@
                                             @if ($data['book_reserved'] == 0)
                                                 {{$data['book_reserved']}}
                                             @else
-                                                 <a href="">
+                                            <a href="/dashboard/show-reservations-data/{{$data['id']}}">
                                             {{$data['book_reserved']}}
                                             </a>
                                             @endif
@@ -75,7 +75,7 @@
                                              @if ($data['book_taken'] == 0)
                                                 {{$data['book_taken']}}
                                             @else
-                                                 <a href="">
+                                              <a href="/dashboard/show-taken-data/{{$data['id']}}">
                                             {{$data['book_taken']}}
                                             </a>
                                             @endif

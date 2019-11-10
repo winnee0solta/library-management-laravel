@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Category;
+use App\Reservedbook;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
@@ -137,5 +140,125 @@ class DashboardController extends Controller
         } else {
             return redirect('/admin/add-new-book')->withErrors(['Fill in fields']);
         }
+    }
+
+    public function showreservationView($id){
+       $rbooks =  Reservedbook::where('book_id',$id)->get();
+       $datas = array();
+       foreach ($rbooks  as $rbook) {
+
+        //get user name email phone
+        $user = User::find($rbook->user_id);
+
+            $temp_data = array(
+                'reservation_id'=> $rbook->id,
+                'name'=>$user->name,
+                'email'=>$user->email,
+                'phone'=>$user->phone,
+                'status'=> $rbook->status,
+                'reserved_date'=> $rbook->created_at->format('Y-m-d'),
+                'return_date'=> $rbook->return_date,
+            );
+
+            array_push($datas, $temp_data);
+       }
+        return view('dashboard.reservationdetail', compact('datas'));
+    }
+
+    public function removereservation($id){
+        $rbook =  Reservedbook::find($id);
+
+        $book = Book::where('id', $rbook->book_id)->first();
+        $book->book_reserved = $book->book_reserved - 1;
+        $book->save();
+
+        $rbook->delete();
+
+        return redirect('/');
+    }
+    public function markreservationtaken($id){
+        $rbook =  Reservedbook::find($id);
+
+        $book = Book::where('id', $rbook->book_id)->first();
+        $book->book_reserved = $book->book_reserved - 1;
+        $book->book_taken = $book->book_taken + 1;
+        $book->save();
+
+        $rbook->status = 'Taken';
+        $rbook->save();
+
+        return redirect('/');
+    }
+
+    public function showtakenView($id)
+    {
+        $rbooks =  Reservedbook::where('book_id', $id)->get();
+        $datas = array();
+        foreach ($rbooks  as $rbook) {
+
+            //get user name email phone
+            $user = User::find($rbook->user_id);
+            $overdue = 'no';
+            $dt = Carbon::now();
+            if ($dt->toDateString() == $rbook->return_date) {
+               $overdue = 'yes';
+            }
+            $temp_data = array(
+                'reservation_id' => $rbook->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                'status' => $rbook->status,
+                'reserved_date' => $rbook->created_at->format('Y-m-d'),
+                'return_date' => $rbook->return_date,
+                'overdue'=> $overdue
+            );
+
+            array_push($datas, $temp_data);
+        }
+        return view('dashboard.takendetail', compact('datas'));
+    }
+    public function markasreturned($id)
+    {
+        $rbook =  Reservedbook::find($id);
+
+        $book = Book::where('id', $rbook->book_id)->first();
+        $book->book_taken = $book->book_taken - 1;
+        $book->save();
+
+
+        $rbook->delete();
+
+        return redirect('/');
+    }
+    public function manageusersView()
+    {
+        $users = User::where('title','admin')->get();
+        return view('dashboard.manageuser',compact('users'));
+    }
+    public function addnewadminview()
+    {
+        return view('dashboard.addadminuser');
+    }
+    public function addnewadmin(Request $request)
+    {
+
+        $user = User::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'title' => 'admin'
+        ]);
+
+        return redirect('/dashboard/manage-users');
+    }
+    public function removeuser($id)
+    {
+
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/dashboard/manage-users');
     }
 }

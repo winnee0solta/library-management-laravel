@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900);@import url(https://fonts.googleapis.com/css?family=Jua);@import url(https://fonts.googleapis.com/css?family=New+Rocker);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed);@charset "UTF-8";
 
 *,
 *:hover,
@@ -190,5 +190,102 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
   /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.red-btn {
+  color: #ffffff;
+  background: #b71f1f;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+.red-btn:hover {
+  border: 1px solid #b71f1f;
+  -webkit-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+  border-radius: 2px;
+  color: #b71f1f;
+  background: #ffffff;
+}
+
+.green-btn {
+  color: #ffffff;
+  background: #00b894;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+.green-btn:hover {
+  border: 1px solid #00b894;
+  -webkit-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+  border-radius: 2px;
+  color: #b71f1f;
+  background: #ffffff;
+}
+
+.navbar {
+  padding: 8px 25px 8px 10px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background: white;
+  box-shadow: -21.213px 21.213px 30px 0px rgba(158, 158, 158, 0.3);
+}
+
+.navbar-nav {
+  text-align: center;
+}
+
+.navbar-nav a {
+  font-family: "Roboto", sans-serif;
+  display: inline !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  margin-right: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: black !important;
+  border: 2px solid white;
+}
+
+.navbar-nav a:hover {
+  border: 2px solid black;
+  border-width: 50%;
+  -webkit-transition: 200ms all ease-in-out;
+  transition: 200ms all ease-in-out;
+}
+
+.navbar-brand {
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.navbar-brand img {
+  height: 35px;
+}
+
+.category-holder .single-cat img {
+  max-height: 200px;
+}
+
+.category-holder .single-cat--img {
+  min-height: 250px;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.category-holder .single-cat--title {
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
 }
 
