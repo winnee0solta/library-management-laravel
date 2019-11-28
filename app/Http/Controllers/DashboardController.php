@@ -66,7 +66,7 @@ class DashboardController extends Controller
             //send mail TODO: mail change
             Mail::send('mail.newcategoryadded', [], function ($message) use ( $currentadmin) {
                 $message->from($currentadmin, 'New Category Added !');
-                $message->to('winneecreztha@gmail.com', 'Library Admin');
+                $message->to('iamalishaacharya@gmail.com', 'Library Admin');
                 $message->subject('New Category Added!');
             });
 
@@ -86,7 +86,7 @@ class DashboardController extends Controller
         //send mail TODO: mail change
         Mail::send('mail.categoryremoved', [], function ($message) use ($currentadmin) {
             $message->from($currentadmin, 'Category Removed !');
-            $message->to('winneecreztha@gmail.com', 'Library Admin');
+            $message->to('iamalishaacharya@gmail.com', 'Library Admin');
             $message->subject('Category Removed');
         });
         return redirect('/dashboard/manage-category');
@@ -111,7 +111,9 @@ class DashboardController extends Controller
         if ($request->hasFile('book-image')) {
             //add book
             $book = Book::create([
+
                 'book_id' => 0,
+                'category_id' => request('book-category'),
                 'book_image' => 'no',
                 'book_name' => request('book-name'),
                 'book_shelves_no' => request('book-shelve-no'),
@@ -133,13 +135,44 @@ class DashboardController extends Controller
             //send mail TODO: mail change
             Mail::send('mail.newbookadded', [], function ($message) use ($currentadmin) {
                 $message->from($currentadmin, 'New Category Added !');
-                $message->to('winneecreztha@gmail.com', 'Library Admin');
+                $message->to('iamalishaacharya@gmail.com', 'Library Admin');
                 $message->subject('New Book Added!');
             });
             return redirect('/');
         } else {
             return redirect('/admin/add-new-book')->withErrors(['Fill in fields']);
         }
+    }
+
+    public function editBookView($id)
+    {
+        $book = Book::find($id);
+        //get category
+        $categorys = Category::get(['id', 'category_name']);
+        return view('dashboard.editbook', compact('categorys','book'));
+    }
+    public function editBook($id, Request $request)
+    {
+
+
+        $book = Book::find($id);
+        $book->category_id = request('book-category');
+        $book->book_name = request('book-name');
+        $book->book_shelves_no = request('book-shelve-no');
+        $book->book_author = request('book-author');
+        $book->book_desc = request('book-desc');
+        $book->book_count = (int) request('book-count');
+
+        if ($request->hasFile('book-image')) {
+            // add image
+            $file = $request->file('book-image');
+            $unique_id = uniqid();
+            $file->move('images/books/', $unique_id . '.' . $file->getClientOriginalExtension());
+            $book->book_image = $unique_id . '.' . $file->getClientOriginalExtension();
+            $book->book_id = (int) $unique_id;
+        }
+        $book->save();
+        return redirect('/');
     }
 
     public function showreservationView($id){
@@ -150,21 +183,52 @@ class DashboardController extends Controller
         //get user name email phone
         $user = User::find($rbook->user_id);
 
-            $temp_data = array(
-                'reservation_id'=> $rbook->id,
-                'name'=>$user->name,
-                'email'=>$user->email,
-                'phone'=>$user->phone,
-                'status'=> $rbook->status,
-                'reserved_date'=> $rbook->created_at->format('Y-m-d'),
-                'return_date'=> $rbook->return_date,
-            );
+            $dt = Carbon::now();
+            $today = $dt->toDateString();
+            //book issued + 2day
+            $dt1 = Carbon::parse($rbook->created_at);
+            $bookissued_twoday = $dt1->addDays(2);
 
-            array_push($datas, $temp_data);
+
+            if ($bookissued_twoday <= $today) {
+                //remove reserveation
+                $rbook->delete();
+                //
+                $book = Book::where('id', $rbook->book_id)->first();
+                $book->book_reserved = $book->book_reserved - 1;
+                $book->save();
+            }else{
+
+                $temp_data = array(
+                    'reservation_id'=> $rbook->id,
+                    'name'=>$user->name,
+                    'email'=>$user->email,
+                    'phone'=>$user->phone,
+                    'status'=> $rbook->status,
+                    'reserved_date'=> $rbook->created_at->format('Y-m-d'),
+                    'return_date'=> $rbook->return_date,
+                );
+
+                array_push($datas, $temp_data);
+            }
+
        }
         return view('dashboard.reservationdetail', compact('datas'));
     }
 
+    public function removeBook($id){
+        $rbook =  Book::find($id) ;
+        $rbook->delete();
+
+        $currentadmin =  Auth::user()->email;
+        //send mail TODO: mail change
+        Mail::send('mail.newbookadded', [], function ($message) use ($currentadmin) {
+            $message->from($currentadmin, 'New Category Added !');
+            $message->to('iamalishaacharya@gmail.com', 'Library Admin');
+            $message->subject('New Book Added!');
+        });
+        return redirect('/');
+    }
     public function removereservation($id){
         $rbook =  Reservedbook::find($id);
 

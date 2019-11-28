@@ -35,7 +35,6 @@
                                     <tr>
                                         <th scope="col">S.N</th>
                                         <th scope="col">Image</th>
-                                        <th scope="col">Book Id</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Category</th>
                                         <th scope="col">Author</th>
@@ -55,7 +54,6 @@
                                         <td>
                                             <img class="img-fluid" src="{{asset('/images/books/'.$data['book_image'])}}" style="max-height:100px;">
                                         </td>
-                                        <td>{{$data['book_id']}}</td>
                                         <td>{{$data['book_name']}}</td>
                                         <td>{{$data['category_name']}}</td>
                                         <td>{{$data['book_author']}}</td>
@@ -82,7 +80,7 @@
                                         </td>
                                         <td>{{$data['added_date']}}</td>
                                          <td>
-                                        {{-- <a href="/dashboard/edit-book/{{$data['id']}}" class="btn view_btn">Edit</a> --}}
+                                        <a href="/dashboard/edit-book/{{$data['id']}}" class="btn view_btn">Edit</a>
                                         <a href="/dashboard/remove-book/{{$data['id']}}" class="btn remove_btn">Remove</a>
                                     </td>
                                     </tr>

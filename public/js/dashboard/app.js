@@ -126,9 +126,9 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\winne\Desktop\British\alisha\resources\js\dashboard\app.js */"./resources/js/dashboard/app.js");
-__webpack_require__(/*! C:\Users\winne\Desktop\British\alisha\resources\sass\dashboard\app.scss */"./resources/sass/dashboard/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\winne\Desktop\British\alisha\resources\sass\site\app.scss */"./resources/sass/site/app.scss");
+__webpack_require__(/*! C:\Users\winne\Desktop\British\alisha\3k-sent\alisha\resources\js\dashboard\app.js */"./resources/js/dashboard/app.js");
+__webpack_require__(/*! C:\Users\winne\Desktop\British\alisha\3k-sent\alisha\resources\sass\dashboard\app.scss */"./resources/sass/dashboard/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\winne\Desktop\British\alisha\3k-sent\alisha\resources\sass\site\app.scss */"./resources/sass/site/app.scss");
 
 
 /***/ })

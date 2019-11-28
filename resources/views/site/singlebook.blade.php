@@ -36,6 +36,9 @@
                     <div class="h3">
                         Shelve No : {{$book['book_shelves_no']}}
                     </div>
+                    <div class="h3">
+                        Book Count : {{$book['book_count']-($book['book_reserved']+$book['book_taken'])}}
+                    </div>
                     <p class="h4 pt-2 text-justify">
                         {{$book['book_desc']}}
                     </p>
@@ -56,7 +59,9 @@
                 </div>
             </div>
 </div>
-
+  <!-- footer bar -->
+            @include('site.partials.footer')
+        <!-- footer bar ends -->
     </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

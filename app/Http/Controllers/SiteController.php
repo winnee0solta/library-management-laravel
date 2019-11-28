@@ -21,7 +21,7 @@ class SiteController extends Controller
 
 
 
-            $books =  Book::orderBy('created_at', 'desc')->get();
+            $books =  Book::orderBy('book_name', 'ASC')->get();
             $datas = array();
             $count = 1;
             foreach ($books as $book) {
@@ -57,7 +57,7 @@ class SiteController extends Controller
             return view('dashboard.index', compact('datas'));
         } else if (Auth::user()->title == 'public') {
             //load datas
-            $categories = Category::all();
+            $categories = Category::orderBy('category_name')->get();
             return view('site.home',compact('categories'));
         }
     }
@@ -89,7 +89,7 @@ class SiteController extends Controller
         //send mail TODO: mail change
         Mail::send('mail.newmessage', $data, function ($message) use ($email, $name) {
             $message->from($email,  $name);
-            $message->to('winneecreztha@gmail.com', 'Library Admin');
+            $message->to('iamalishaacharya@gmail.com', 'Library Admin');
             $message->subject('New Message From Library Site!');
         });
 
@@ -105,7 +105,7 @@ class SiteController extends Controller
         return view('site.terms');
     }
     public function singlecatView($id,$name){
-        $books = Book::where('category_id',$id)->get();
+        $books = Book::where('category_id',$id)->orderBy('book_name')->get();
         return view('site.singlecat',compact('name','books'));
     }
     public function singlebookView($id,$name){
@@ -141,7 +141,7 @@ class SiteController extends Controller
             //send mail TODO: mail change
             Mail::send('mail.newbookreserved', [], function ($message) use ($currentuser) {
                 $message->from($currentuser, 'New Book Reserved !');
-                $message->to('winneecreztha@gmail.com', 'Library Admin');
+                $message->to('iamalishaacharya@gmail.com', 'Library Admin');
                 $message->subject('Book Reservation!');
             });
         }

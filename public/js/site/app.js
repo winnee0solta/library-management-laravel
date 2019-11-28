@@ -104,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\winne\Desktop\British\alisha\resources\js\site\app.js */"./resources/js/site/app.js");
+module.exports = __webpack_require__(/*! C:\Users\winne\Desktop\British\alisha\3k-sent\alisha\resources\js\site\app.js */"./resources/js/site/app.js");
 
 
 /***/ })

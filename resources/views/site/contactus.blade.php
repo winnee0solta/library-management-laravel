@@ -25,6 +25,7 @@
                     <div >
                         <img class="img-fluid" src="{{asset('/images/logo.jpg')}}" style="height: 300px;display:block;margin:0 auto;">
                     </div>
+                    <row class="justify-content-center"></row>
                     <form class="h4" action="/contact-us" method="POST">
                         {{ csrf_field() }}
                     <div class="form-group">
@@ -45,7 +46,9 @@
                 </div>
             </div>
 
-
+  <!-- footer bar -->
+            @include('site.partials.footer')
+        <!-- footer bar ends -->
     </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

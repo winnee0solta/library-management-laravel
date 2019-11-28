@@ -9,9 +9,12 @@
         </div>
         <div class="col-md-4 col-12">
             <div class="logout-btn">
+                @if (\Auth::user()->email   == 'iamalishaacharya@gmail.com')
+
                 <a href="/dashboard/manage-users" class="btn">
                     Manage Users
                 </a>
+                @endif
                 <a href="/logout" class="btn">
                     Logout
                 </a>

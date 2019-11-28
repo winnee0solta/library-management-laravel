@@ -48,7 +48,7 @@
                                 @endforeach
                             </div>
                             @endif
-                            <button type="submit" class="btn btn_submit">Add Book</button>
+                            <button type="submit" class="btn btn_submit">Add Category</button>
                         </form>
                     </div>
                 </div>

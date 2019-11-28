@@ -27,9 +27,9 @@
                 Categories
             </div>
             <div class="row">
+                @if (!empty($categories))
+                    @foreach ($categories as $cat)
                 <div class="col-md-3 mt-3">
-                    @if (!empty($categories))
-                        @foreach ($categories as $cat)
                         <a href="/category/{{$cat['id']}}/{{$cat['category_name']}}">
                             <div class="single-cat card">
                             <div class="single-cat--img m-2" style="background: url('/images/category/{{$cat['category_image']}}')">
@@ -40,14 +40,20 @@
                              </div>
                         </div>
                         </a>
-                        @endforeach
-                    @endif
-                </div>
+                    </div>
+                    @endforeach
+                @endif
             </div>
         </div>
         {{-- categorys ends --}}
 
+        <!-- footer bar -->
+            @include('site.partials.footer')
+        <!-- footer bar ends -->
+
     </div>
+
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">

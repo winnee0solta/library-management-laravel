@@ -2,7 +2,7 @@
     padding: 8px 25px 8px 10px;
     transition: all 0.5s;
     background: white;
-    box-shadow: -21.213px 21.213px 30px 0px rgba(158, 158, 158, 0.3);
+    // box-shadow: -21.213px 21.213px 30px 0px rgba(158, 158, 158, 0.3);
 }
 
 .navbar-nav {
@@ -20,13 +20,10 @@
         border: 2px solid white;
 
         &:hover {
-            border: 2px solid black;
-            border-width: 50%;
-            transition: 200ms all ease-in-out;
+            color: red !important;
         }
 
     }
-
 
 }
 
@@ -35,9 +32,22 @@
     margin-left: 20px;
 
     img {
-        height: 35px;
+        height: 100px;
 
     }
+}
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+ .navbar-toggler {
+    background-color: black !important;
+}
+
+.bg-white{
+    background: white;
+    color: black !important;
+    border-color: black !important;
 }
 
 
@@ -61,4 +71,8 @@
 
         }
     }
+}
+
+.footer{
+    box-shadow: -21.213px 21.213px 30px 0px rgba(158, 158, 158, 0.3);
 }
